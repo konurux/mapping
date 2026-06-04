@@ -1,0 +1,30 @@
+{
+  "summary": "Backend-only testing for iteration 2 schema upgrades (polygon labels, lines, texts, removal of background_image). Rewrote /app/backend/tests/test_backend_api.py with 17 pytest cases covering create/update/get round-trips, default values, public share, and backward compat. All 17 tests PASSED against the live preview URL.",
+  "backend_issues": {
+    "critical": [],
+    "minor": [
+      {"endpoint": "POST /api/maps", "issue": "create_map still inserts 'background_image': None in DB doc; not exposed via serialize_map but should be removed from insert to keep DB clean."},
+      {"endpoint": "POST /api/maps", "issue": "Newly created doc does not initialize 'lines': [] / 'texts': [] in MongoDB (serialize_map masks via .get default). Cosmetic, not functional."}
+    ]
+  },
+  "frontend_issues": {"ui_bugs": [], "integration_issues": [], "design_issues": []},
+  "test_report_links": ["/app/backend/tests/test_backend_api.py", "/app/test_reports/pytest/pytest_results.xml"],
+  "action_items": [
+    "Optional: in create_map, drop 'background_image' key from inserted doc and add 'lines': [], 'texts': [] for cleanliness (does not affect API contract).",
+    "Optional: CORS uses single FRONTEND_URL origin; ensure preview URL matches the env var, otherwise public/share frontend calls may fail."
+  ],
+  "critical_code_review_comments": [
+    "Polygon/Line/TextItem models correctly extended with sensible defaults (label_size=14, color, width, size).",
+    "MapUpdate uses exclude_none=True so partial updates won't clobber existing arrays - good.",
+    "serialize_map gracefully returns [] for missing lines/texts → backward compat verified by test_legacy_map_without_lines_texts.",
+    "background_image successfully removed from response surface (verified in create/get/list/public endpoints)."
+  ],
+  "updated_files": ["/app/backend/tests/test_backend_api.py"],
+  "success_rate": {"backend": "100%", "frontend": "n/a (skipped per request)"},
+  "test_credentials": "Dynamic TEST_<uuid>@example.com / test1234 created per run via /api/auth/register",
+  "seed_data_creation": "No persistent seed; each test creates ephemeral TEST_ users and maps.",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "test_backend_api.py covers: auth (register/login/me/bearer), POST /api/maps default schema with lines/texts arrays & no background_image, PUT /api/maps with polygons (label_x/label_y/label_size), lines (id/layer_id/points/name/color/width), texts (id/layer_id/x/y/text/size/color), defaults verification, GET round-trip, public share endpoint including new fields, and backward compat for legacy maps. Run via: pytest /app/backend/tests/test_backend_api.py -v",
+  "rca of the issue": "N/A — no failures."
+}

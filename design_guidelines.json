@@ -1,0 +1,113 @@
+{
+  "project_name": "Interactive Story & Game Map Editor",
+  "language": "Russian",
+  "theme": "Dark",
+  "archetype": "Archetype 4 (Swiss & High-Contrast)",
+  "instructions_to_main_agent": "Strictly implement the UI matching these design guidelines. Focus heavily on a dense, functional UI for the map editor (Control Room layout) and a high-impact, expansive layout for the marketing page. Use raw HTML/Tailwind for marketing, Shadcn UI for dashboard/editor components. The entire app MUST be in Russian.",
+  "typography": {
+    "heading_font": "Unbounded",
+    "body_font": "IBM Plex Sans",
+    "import_url": "@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=Unbounded:wght@300;400;600;800&display=swap');",
+    "hierarchy": {
+      "h1": "text-4xl sm:text-5xl lg:text-6xl font-black tracking-tighter leading-none",
+      "h2": "text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight",
+      "h3": "text-xl sm:text-2xl font-semibold",
+      "h4": "text-lg sm:text-xl font-medium",
+      "body": "text-sm sm:text-base font-normal leading-relaxed text-zinc-300",
+      "labels_overlines": "text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500"
+    }
+  },
+  "colors": {
+    "background": {
+      "primary": "#0A0A0A",
+      "secondary": "#141414",
+      "glass": "rgba(10, 10, 10, 0.7)"
+    },
+    "text": {
+      "primary": "#FFFFFF",
+      "secondary": "#A1A1AA",
+      "muted": "#52525B"
+    },
+    "brand": {
+      "primary": "#F59E0B",
+      "primary_hover": "#D97706",
+      "danger": "#EF4444"
+    },
+    "border": "rgba(255, 255, 255, 0.1)"
+  },
+  "surfaces_and_containers": {
+    "navigation_header": "backdrop-blur-xl bg-black/60 border-b border-white/10 z-50 fixed w-full top-0",
+    "cards_dashboard": "bg-[#141414] border border-white/10 p-6 rounded-md shadow-sm transition-all hover:-translate-y-1 hover:border-white/20",
+    "editor_toolbars": "bg-[#0A0A0A]/80 backdrop-blur-lg border border-white/10 rounded-lg shadow-2xl p-2",
+    "properties_panel": "bg-[#141414] border-l border-white/10 h-full flex flex-col p-4",
+    "buttons": {
+      "primary": "bg-amber-500 hover:bg-amber-600 text-black font-semibold rounded-md transition-colors",
+      "secondary": "bg-transparent border border-white/20 hover:border-white/50 text-white rounded-md transition-all",
+      "ghost": "hover:bg-white/10 text-zinc-300 hover:text-white rounded-md transition-all"
+    }
+  },
+  "layouts": {
+    "marketing_page": {
+      "grid_type": "Bento / Tetris",
+      "spacing": "gap-8 lg:gap-12",
+      "hero_section": "min-h-screen flex flex-col justify-center items-start pt-24 pb-12 relative overflow-hidden px-8 lg:px-24"
+    },
+    "dashboard": {
+      "grid_type": "Control Room",
+      "grid_classes": "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6",
+      "spacing": "p-8 pt-24"
+    },
+    "map_editor": {
+      "wrapper": "w-screen h-screen overflow-hidden bg-[#0A0A0A] relative flex",
+      "top_bar": "absolute top-4 left-4 right-4 h-14 flex items-center justify-between z-40 backdrop-blur-md bg-black/50 border border-white/10 rounded-lg px-4",
+      "tools_sidebar": "absolute top-1/2 -translate-y-1/2 left-4 w-12 flex flex-col gap-2 z-40 bg-black/80 backdrop-blur-md border border-white/10 rounded-lg p-2",
+      "layers_panel": "absolute top-24 bottom-4 right-4 w-80 z-40 bg-black/80 backdrop-blur-md border border-white/10 rounded-lg flex flex-col overflow-hidden",
+      "canvas_area": "absolute inset-0 z-10 w-full h-full cursor-grab active:cursor-grabbing"
+    }
+  },
+  "components_strategy": {
+    "forms": "Use Shadcn Form, Input, Select. Customize borders to white/10, background to transparent.",
+    "modals": "Use Shadcn Dialog. Background #141414, border white/10, sharp or md border radius.",
+    "map_canvas": "HTML5 Canvas or SVG based approach for drawing polygons, placing absolute positioned markers, and rendering the background image.",
+    "icons": "lucide-react"
+  },
+  "interactions_and_motion": {
+    "hover_states": "Text color brightens, subtle borders fade in, background receives 5% white overlay.",
+    "page_transitions": "Framer motion fade in (opacity 0 to 1, y: 10 to 0).",
+    "editor_panels": "Slide in from edges on mount."
+  },
+  "media_and_images": {
+    "hero_background": {
+      "url": "https://static.prod-images.emergentagent.com/jobs/c4cd9ec9-42fb-4f37-bc88-c484e7ec2d8a/images/75c3ff19c00e5c39f8cf3bbbc4d6ed0bb827104cfc8af64dfc5d266c2701847b.png",
+      "description": "Dark topo grid pattern, use as repeating background or full cover with opacity 0.3 on the marketing page."
+    },
+    "marketing_showcase": {
+      "url": "https://static.prod-images.emergentagent.com/jobs/c4cd9ec9-42fb-4f37-bc88-c484e7ec2d8a/images/9f2f0fa924b6537df9c45376955ba42ef5f2aa952c1ae93044d59639d6554496.png",
+      "description": "Hero map UI mockup. Use this on the right side of the landing page hero section (or as a large center graphic) to showcase what the platform builds."
+    },
+    "dashboard_thumbnails": [
+      {
+        "url": "https://images.unsplash.com/photo-1677295922463-147d7f2f718c?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2MjJ8MHwxfHNlYXJjaHwxfHxtaW5pbWFsaXN0JTIwZmFudGFzeSUyMG1hcCUyMGRpZ2l0YWwlMjBhcnR8ZW58MHx8fHwxNzc5MTI4NjY1fDA&ixlib=rb-4.1.0&q=85",
+        "description": "Sample map thumbnail 1"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1700605920874-f621a75c6c17?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2MjJ8MHwxfHNlYXJjaHwyfHxtaW5pbWFsaXN0JTIwZmFudGFzeSUyMG1hcCUyMGRpZ2l0YWwlMjBhcnR8ZW58MHx8fHwxNzc5MTI4NjY1fDA&ixlib=rb-4.1.0&q=85",
+        "description": "Sample map thumbnail 2"
+      }
+    ]
+  },
+  "testing_attributes": {
+    "login_submit": "data-testid='login-form-submit-button'",
+    "register_submit": "data-testid='register-form-submit-button'",
+    "map_card": "data-testid='dashboard-map-card'",
+    "editor_canvas": "data-testid='map-editor-canvas'",
+    "tool_polygon": "data-testid='tool-polygon-button'",
+    "tool_marker": "data-testid='tool-marker-button'",
+    "tool_pan": "data-testid='tool-pan-button'",
+    "layer_item": "data-testid='layer-list-item'",
+    "layer_visibility_toggle": "data-testid='layer-visibility-toggle'",
+    "save_map": "data-testid='save-map-button'",
+    "share_map": "data-testid='share-map-button'",
+    "public_map_viewer": "data-testid='public-map-viewer'"
+  }
+}
