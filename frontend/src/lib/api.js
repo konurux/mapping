@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // Прямо указываем адрес твоего бэкенда
-const BACKEND_URL = "http://127.0.0.1:8000";
+const BACKEND_URL = "https://mapping-zg12.onrender.com";
 export const API_BASE = `${BACKEND_URL}/api`;
 
 export const api = axios.create({

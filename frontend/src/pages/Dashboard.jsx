@@ -84,14 +84,14 @@ export default function Dashboard() {
                 <div>
                   <Label htmlFor="t" className="text-zinc-300">Название</Label>
                   <Input id="t" value={title} onChange={(e) => setTitle(e.target.value)}
-                    placeholder="Континент Эльдара"
+                    placeholder="Новый мир..."
                     className="bg-black/40 border-white/10 text-white mt-2"
                     data-testid="create-map-title-input" />
                 </div>
                 <div>
                   <Label htmlFor="d" className="text-zinc-300">Описание</Label>
                   <Input id="d" value={description} onChange={(e) => setDescription(e.target.value)}
-                    placeholder="Мир последней эпохи..."
+                    placeholder="опиши свой мир, чтобы другие знали, что там происходит"
                     className="bg-black/40 border-white/10 text-white mt-2" />
                 </div>
                 <DialogFooter>

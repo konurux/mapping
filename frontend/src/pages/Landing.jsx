@@ -28,7 +28,7 @@ export default function Landing() {
             </h1>
             <p className="mt-6 text-base sm:text-lg text-zinc-300 max-w-xl leading-relaxed">
               Интерактивные карты для настольных игр, ролевых кампаний, фэнтезийных вселенных
-              и историй. Pen-инструмент как в Figma, маркеры, слои, маршруты — всё в одном редакторе.
+              и историй. Маркеры, слои, маршруты — всё в одном редакторе.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link to="/register">

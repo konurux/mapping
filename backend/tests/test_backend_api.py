@@ -16,8 +16,9 @@ if not _env_url:
     except Exception:
         pass
 assert _env_url, "REACT_APP_BACKEND_URL must be set"
-BASE_URL = _env_url.rstrip("/")
-API = f"{BASE_URL}/api"
+// Пример для React (используя process.env)
+const BASE_URL = (process.env.REACT_APP_API_URL || 'http://localhost:10000').rstrip("/");
+const API = `${BASE_URL}/api`;
 
 
 def _unique_email() -> str:
