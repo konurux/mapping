@@ -51,7 +51,7 @@ export default function Landing() {
           <div className="lg:col-span-5 relative">
             <div className="aspect-[4/5] rounded-lg overflow-hidden border border-white/10 bg-[#0d0d0d] relative shadow-2xl">
               <img
-                src="https://static.prod-images.emergentagent.com/jobs/c4cd9ec9-42fb-4f37-bc88-c484e7ec2d8a/images/9f2f0fa924b6537df9c45376955ba42ef5f2aa952c1ae93044d59639d6554496.png"
+                src="https://ibb.co/W4StQHhv"
                 alt="Превью редактора карт"
                 className="w-full h-full object-cover opacity-90"
               />
