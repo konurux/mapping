@@ -358,18 +358,21 @@ async def root():
     return {"message": "MapForge API"}
 
 
-# -----------------------------------------------------------------------------
-# App configuration
-# -----------------------------------------------------------------------------
-app.include_router(api_router)
+# 1. Сначала создаем приложение
+app = FastAPI(title="MapForge API")
 
+# 2. СРАЗУ настраиваем CORS (до подключения роутеров)
+frontend_url = os.environ.get('FRONTEND_URL', 'http://localhost:3000').rstrip('/')
 app.add_middleware(
     CORSMiddleware,
+    allow_origins=[frontend_url],
     allow_credentials=True,
-    allow_origins=[os.environ.get('FRONTEND_URL', 'http://localhost:3000')],
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# 3. И только потом подключаем роутеры
+app.include_router(api_router)
 
 
 @app.on_event("startup")
